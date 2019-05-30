@@ -1,0 +1,34 @@
+#include <16f877.h>
+#fuses HS,NOWDT,NOPUT
+#use delay(clock=4000000)
+
+#define use_portb_lcd TRUE
+#include <lcd.c>
+
+void main ()
+{
+   lcd_init(); // limpa
+
+   while(TRUE)
+   {
+      lcd_gotoxy(1,1);
+      lcd_putc("Queimador ligado");
+      delay_ms(2000);
+      lcd_init(); // limpa
+
+      lcd_gotoxy(1,2);
+      lcd_putc("gases A e C");
+      delay_ms(2000);
+      lcd_init(); // limpa
+
+      lcd_gotoxy(1,1);
+      lcd_putc("ignitor ligado");
+      delay_ms(2000);
+      lcd_init(); // limpa
+
+      lcd_gotoxy(1,2);
+      lcd_putc("não há o gas B");
+      delay_ms(2000);
+      lcd_init(); // limpa
+   }
+}

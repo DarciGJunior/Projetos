@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+
+char a, b, c, d, e, f, g, h;
+
+printf("Digite um numero binário de 8 algarismos: ");
+
+scanf(" %c %c %c %c %c %c %c", &a, &b, &c, &d, &e, &f, &g, &h);
+
+a= (a == '0')? 0: 1;
+b= (b == '0')? 0: 1;
+c= (c == '0')? 0: 1;
+d= (d == '0')? 0: 1;
+e= (e == '0')? 0: 1;
+f= (f == '0')? 0: 1;
+g= (g == '0')? 0: 1;
+h= (h == '0')? 0: 1;
+
+a = a*pow(2,7);
+b = b*pow(2,6);
+c = c*pow(2,5);
+d = d*pow(2,4);
+e = e*pow(2,3);
+f = f*pow(2,2);
+g = g*pow(2,1);
+h = h*pow(2,0);
+
+
+printf("\n\nEm decimal \202: %d", a+b+c+d+e+f+g+h);
+
+}

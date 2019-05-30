@@ -1,0 +1,48 @@
+#include <16f877A.h>
+#use delay(clock=4000000)
+#fuses xt,nowdt,noprotect,put,brownout,nolvp,nocpd
+
+#use fast_io(b)
+#byte portb = 0x06
+
+
+void main ()
+{
+ short int a,b,c,d,e,f,g ;
+
+ set_tris_b(0b00000000);
+
+ portb=0x00;
+
+   while(TRUE)
+   {
+      a= input (pin_b0);
+      b= input (pin_b1);
+      c= input (pin_b2);
+      d= input (pin_b3);
+      e= input (pin_b4);
+      f= input (pin_b5);
+      g= input (pin_b6);
+
+         output_high (pin_b0) && (pin_b1) && (pin_b2) && (pin_b3) && (pin_b4) && (pin_b5); // 0 - abcdef
+         delay_ms(1000);
+         output_high (pin_b1) && (pin_b2); // 1 - bc
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b1) && (pin_b3) && (pin_b4) && (pin_b6); // 2 - abdeg
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b1) && (pin_b2) && (pin_b3) && (pin_b6); // 3 - abcdg
+         delay_ms(1000);
+         output_high (pin_b1) && (pin_b2) && (pin_b5) && (pin_b6); // 4 - bcfg
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b2) && (pin_b3) && (pin_b5) && (pin_b6); // 5 - acdfg
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b2) && (pin_b3) && (pin_b4) && (pin_b5) && (pin_b6); // 6 - acdefg
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b1) && (pin_b2); // 7 - abc
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b1) && (pin_b2) && (pin_b3) && (pin_b4) && (pin_b5) && (pin_b6); // 8 - abcdefg
+         delay_ms(1000);
+         output_high (pin_b0) && (pin_b1) && (pin_b2) && (pin_b3) && (pin_b5) && (pin_b6); // 9 - abcdfg
+         delay_ms(1000);
+   }
+}
